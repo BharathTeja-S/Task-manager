@@ -4,9 +4,12 @@ import Login from './pages/auth/Login'
 import SignUp from './pages/auth/SignUp'
 import Dashboard from './pages/admin/Dashboard'
 import CreateTask from './pages/admin/CreateTask'
-import ManageTask from './pages/admin/ManageTask'
-import ManageUser from './pages/admin/ManageUser'
+import ManageTask from './pages/admin/ManageTask' 
 import PrivateRoute from './routes/PrivateRoute'
+import UserDashboard from './pages/user/UserDashboard'
+import MyTasks from './pages/user/MyTasks'
+import TaskDetails from './pages/user/TaskDetails'
+import ManageUsers from './pages/admin/ManageUsers'
 const App = () => {
   return (
     <div className="text-primary">
@@ -20,7 +23,7 @@ const App = () => {
             <Route path="/admin/dashboard" element={<Dashboard />} />
             <Route path="/admin/create-task" element={<CreateTask />} />
             <Route path="/admin/tasks" element={<ManageTask />} />
-            <Route path="/admin/users" element={<ManageUser />} />
+            <Route path="/admin/users" element={<ManageUsers />} />
           </Route>
           
           /*User Routes*/
