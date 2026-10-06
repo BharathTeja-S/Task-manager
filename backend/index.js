@@ -1,9 +1,16 @@
 import express from "express"
 import cors from "cors"
 import dotenv from "dotenv"
+import mongoose from "mongoose"
 const app=express();
-
 dotenv.config();
+
+mongoose.connect(process.env.MONGO_URI).then( () =>{
+    console.log("Connected to MongoDB");
+}).catch((err) => {
+    console.log(err);
+})
+
 //middleware to handle cors
 app.use(cors({
     origin:process.env.FRONT_END_URL || "http://localhost:5173",
