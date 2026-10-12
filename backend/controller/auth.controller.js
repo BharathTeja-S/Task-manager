@@ -78,3 +78,28 @@ export const userProfile = async(req, res, next) => {
     }
 
 }
+
+export const updateUserProfile = async(req, res, next) => {
+    try{
+        const user = await User.findById(req.user.id)
+        if(!user){
+            return next(errorHandler(404, "User not found"))
+        }
+
+        user.name=req.body.name || user.name
+        user.email = req.body.email || user.email
+
+        if(req.body.password){
+            user.password=bcryptjs.hashSync(req.body.password, 10)
+        }
+
+        const updatedUser = await user.save();
+        
+        const {password:pass, ...rest}=updatedUser._doc
+        res.status(200).json(rest)
+    
+    }
+    catch(err){
+        return next(errorHandler(500,err.message))
+    }
+}
